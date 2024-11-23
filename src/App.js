@@ -14,7 +14,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/survey" element={<Survey />} />
+        <Route path="/survey/:questionNumber" element={<Survey />} />
         { /* Nous imbriquons nos composants dans survey */}
           <Route path="client" element={<ClientForm />} />
           <Route path="freelance" element={<FreelanceForm />} />
