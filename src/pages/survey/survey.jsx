@@ -1,7 +1,12 @@
+import { useEffect } from "react"
 import { Link, Outlet } from "react-router-dom"
 import { useParams } from "react-router-dom"
 
 function Survey() {
+
+  useEffect(()=>{
+    fetch(`http://localhost:8000/survey`)
+  })
   const {questionNumber} = useParams()
   return (
       <>
