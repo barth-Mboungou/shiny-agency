@@ -4,13 +4,15 @@ import './App.css'
 import Header from './components/header'
 import Home from './pages/home/Home'
 import Survey from './pages/survey/survey'
-import ClientForm from './components/ClientForm'
-import FreelanceForm from './components/FreelanceForm'
+// import ClientForm from './components/ClientForm'
+// import FreelanceForm from './components/FreelanceForm'
 import Error from './components/Error'
 import Results from './pages/Results/Results'
 import Freelance from './pages/Freelances/Freelenace'
 // import Card from './components/Card/Card'
 import { createGlobalStyle } from 'styled-components'
+import Footer from './components/footer/footer'
+import { SurveyProvider, ThemeProvider } from './utils/context'
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -28,20 +30,21 @@ function App() {
   return (
     <>
       <Router>
-        <GlobalStyle/>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/survey/:questionNumber" element={<Survey />} />
-          {/* Nous imbriquons nos composants dans survey */}
-          <Route path="client" element={<ClientForm />} />
-          <Route path="freelance" element={<FreelanceForm />} />
-          <Route path="results" element={<Results/>} />
-          <Route path="freelances" element={<Freelance/>} />
-          {/* <Route path = "card" element={Card}/> */}
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </Router>
+      <ThemeProvider>
+        <SurveyProvider>
+          <GlobalStyle />
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/survey/:questionNumber" element={<Survey />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/freelances" element={<Freelance />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+          <Footer />
+        </SurveyProvider>
+      </ThemeProvider>
+    </Router>
     </>
   )
 }

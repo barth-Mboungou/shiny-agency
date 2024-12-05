@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
-import { useTheme } from '../hooks'
+// import { useTheme } from '../hooks'
+import { useContext } from 'react'
+import { ThemeContext } from '../context/ThemeProvider'
 
 const StyledGlobalStyle = createGlobalStyle`
     * {
@@ -12,9 +14,9 @@ const StyledGlobalStyle = createGlobalStyle`
         margin: 0;
     }
 `
-
+// Ce qui nous permet de récupérer le thème :
 function GlobalStyle() {
-  const { theme } = useTheme()
+  const { theme } = useContext(ThemeContext)
 
   return <StyledGlobalStyle isDarkMode={theme === 'dark'} />
 }
