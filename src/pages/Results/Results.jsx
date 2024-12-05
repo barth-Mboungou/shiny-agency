@@ -1,9 +1,13 @@
-import React from 'react'
+import { useContext } from 'react'
+import { SurveyContext } from '../../utils/context'
 
-const Results = () => {
+function Results() {
+  const { answers } = useContext(SurveyContext)
+  console.log(answers)
+
   return (
     <div>
-      <p>page en plein construction</p>
+      <h1>Résultats</h1>
     </div>
   )
 }
